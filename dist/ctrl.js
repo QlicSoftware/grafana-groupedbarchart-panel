@@ -403,7 +403,7 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                                     }
 
                                     if (this.barValuesShow) {
-                                        this.chartType === 'bar chart' && this.barC.append('text').attr('x', function (d) {
+                                        this.barC.append('text').attr('x', function (d) {
                                             return _this4.orientation === 'horizontal' ? _this4.x(d.value) + 5 : _this4.x1(d.name) + _this4.x1.rangeBand() / 4 + _this4.margin.left;
                                         }).attr('y', function (d) {
                                             return _this4.orientation === 'horizontal' ? _this4.y1(d.name) + _this4.y1.rangeBand() / 2 : _this4.y(d.value) - _this4.height - 8;

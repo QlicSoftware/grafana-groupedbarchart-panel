@@ -336,7 +336,7 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                 }
 
                 if(this.barValuesShow) {
-                    (this.chartType === 'bar chart') && this.barC.append('text')
+                    this.barC.append('text')
                         .attr('x', d => {
                             return (this.orientation === 'horizontal')
                             ? this.x(d.value) +5
