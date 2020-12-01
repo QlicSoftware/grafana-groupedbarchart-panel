@@ -1,7 +1,7 @@
 {
   "type": "panel",
-  "name": "Grouped Bar Chart",
-  "id": "grafana-groupedbarchart-panel",
+  "name": "Qlic Grouped Bar Chart",
+  "id": "qlic-grafana-groupedbarchart-panel",
 
   "info": {
     "description": "Grouped bar chart panel for grafana",
@@ -15,13 +15,16 @@
       "large": "src/img/groupedBarChart_logo_large.png"
     },
     "links": [
-      {"name": "Project site", "url": "https://github.com/gipong/grafana-groupedbarchart-panel.git"}
+      {
+        "name": "Project site",
+        "url": "https://github.com/gipong/grafana-groupedbarchart-panel.git"
+      }
     ],
     "screenshots": [
-      {"name": "Grouped bar chart", "path": "src/img/groupedbarchart.png"},
-      {"name": "metrics", "path": "src/img/groupedbarchart-metrics.png"},
-      {"name": "options", "path": "src/img/groupedbarchart-options.png"},
-      {"name": "colors", "path": "src/img/groupedbarchart-colors.png"}
+      { "name": "Grouped bar chart", "path": "src/img/groupedbarchart.png" },
+      { "name": "metrics", "path": "src/img/groupedbarchart-metrics.png" },
+      { "name": "options", "path": "src/img/groupedbarchart-options.png" },
+      { "name": "colors", "path": "src/img/groupedbarchart-colors.png" }
     ],
     "version": "1.0.3",
     "updated": "2020-03-16"
@@ -29,6 +32,6 @@
 
   "dependencies": {
     "grafanaVersion": "4.6",
-    "plugins": [ ]
+    "plugins": []
   }
 }
