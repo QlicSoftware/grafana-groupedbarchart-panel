@@ -59,7 +59,6 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                     this.events.on('data-received', this.onDataReceived.bind(this));
                     this.events.on('data-snapshot-load', this.onDataReceived.bind(this));
                     this.events.on('data-error', this.onDataError.bind(this));
-                    this.events.on('span-changed', console.log);
                 }
 
                 onInitEditMode() {
