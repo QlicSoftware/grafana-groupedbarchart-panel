@@ -49,6 +49,7 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
         this.events.on('data-received', this.onDataReceived.bind(this));
         this.events.on('data-snapshot-load', this.onDataReceived.bind(this));
         this.events.on('data-error', this.onDataError.bind(this));
+        this.events.on('span-changed', console.log)
     }
 
     onInitEditMode() {
@@ -73,18 +74,8 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
 
     onDataReceived(dataList) {
         if (dataList && dataList.length) {
-            let o = _.groupBy(dataList[0].rows, e => e[0]);
-            _.forOwn(o, (e, i) => {
-                let t = _.groupBy(e, sta => sta[1]);
-                o[i] = _.forOwn(t, (sum, tid) => {t[tid] = sum.map(s => s[2]).reduce((x,y) => x+y)})
-            });
-
-            let res = [];
-            _.forOwn(o, (e, i) => {
-                e.label = i;
-                res.push(e);
-            });
-            this.data = res;//.sort((a, b) => {return (a.label>b.label)?-1:((b.label>a.label)?1:0)});
+            let columns = dataList[0].columns.map(({text}) => text)
+            this.data = dataList[0].rows.map((row) => columns.reduce((accumulator, value, index) => ({...accumulator, ...{[value]: row[index]}}), {}))
         } else {
             this.data = [
                 {label:"Machine001", "Off":15, "Down":50, "Run": 0, "Idle":40},
@@ -93,7 +84,7 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                 {label:"Machine004", "Off":15, "Down":30, "Run":80, "Idle":15}
             ];
         }
-        
+
         this.render();
     }
 
@@ -192,7 +183,7 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
 
                         this.y = d3.scale.linear()
                             .range([0, +this.height]);
-                        
+
                         this.axesConfig = [this.x0, this.y, this.x0, this.x1, this.y];
                         break;
                 }
@@ -214,7 +205,7 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                 this.axesConfig[3].domain(this.options).rangeRoundBands([0, this.axesConfig[2].rangeBand()]);
 
                 let chartScale = (this.chartType === 'bar chart') ? 0 : 1;
-                let domainCal = (this.orientation === 'horizontal') 
+                let domainCal = (this.orientation === 'horizontal')
                     ? [0, d3.max(this.data, function(d) { return d3.max(d.valores, d => { return (d.value + chartScale*d.stackVal)*axesScale; }); })]
                     : [d3.max(this.data, function(d) { return d3.max(d.valores, d => { return (d.value + chartScale*d.stackVal)*axesScale; }); }), 0];
                 this.axesConfig[4].domain(domainCal);
@@ -249,7 +240,7 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                     .style('fill', `${this.fontColor}`);
                 yAxisConfig.selectAll('path')
                     .style('stroke', `${this.fontColor}`);
-                
+
             }
 
             addBar() {
@@ -282,13 +273,13 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                             .data(d => { return d.valores; })
                             .enter();
 
-                        
+
                         this.barC.append('rect')
                             .attr('height', this.y1.rangeBand()*scale)
-                            .attr('y', d => { 
+                            .attr('y', d => {
                                 return (this.chartType === 'bar chart') ? this.y1(d.name) : this.y0(d.label);
                             })
-                            .attr('x', d => { 
+                            .attr('x', d => {
                                 return (this.chartType === 'bar chart') ? 0 : this.x(d.stackVal);
                             })
                             .attr('value', d => { return d.name;})
@@ -326,10 +317,10 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                         this.barC.append('rect')
                             .attr('id', (d, i) => { return `${d.label}_${i}`;})
                             .attr('height', d => { return +this.height - this.y(d.value);})
-                            .attr('y', d => { 
+                            .attr('y', d => {
                                 return (this.chartType === 'bar chart') ? this.y(d.value) - this.height :  (this.y(d.value) - 2*(+this.height) + this.y(d.stackVal));
                             })
-                            .attr('x', (d, i) => { 
+                            .attr('x', (d, i) => {
                                 return (this.chartType === 'bar chart') ? this.x1(d.name) + this.margin.left : this.x1(d.name) - this.x1.rangeBand()*i + this.margin.left;
                             })
                             .attr('value', d => { return d.name;})
@@ -341,15 +332,15 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
 
                 if(this.barValuesShow) {
                     (this.chartType === 'bar chart') && this.barC.append('text')
-                        .attr('x', d => { 
-                            return (this.orientation === 'horizontal') 
+                        .attr('x', d => {
+                            return (this.orientation === 'horizontal')
                             ? this.x(d.value) +5
-                            : this.x1(d.name) + this.x1.rangeBand()/4 + this.margin.left;  
+                            : this.x1(d.name) + this.x1.rangeBand()/4 + this.margin.left;
                         })
-                        .attr('y', d => { 
+                        .attr('y', d => {
                             return (this.orientation === 'horizontal')
                             ? this.y1(d.name) +(this.y1.rangeBand()/2)
-                            : this.y(d.value) - this.height -8; 
+                            : this.y(d.value) - this.height -8;
                         })
                         .attr('dy', '.35em')
                         .style('fill', `${this.fontColor}`)
