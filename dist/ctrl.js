@@ -260,12 +260,8 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
 
                                     this.width = this.element.parentNode.clientWidth;
                                     this.height = this.element.parentNode.clientHeight * 0.7;
-                                    this.svg.style.position = 'relative';
-                                    this.svg.style.left = '-40px';
-                                    this.svg.attr('width', this.width).attr('height', this.height)
 
-                                    // .attr('viewBox', `0, 0, ${this.width}, ${this.height}`)
-                                    .attr('preserveAspectRatio', 'xMinYMin meet').attr('transform', 'translate(0, ' + this.margin.top + ')');
+                                    this.svg.attr('width', this.width).attr('height', this.height).attr('preserveAspectRatio', 'xMinYMin meet');
 
                                     this.createScales();
                                     this.addAxes();
