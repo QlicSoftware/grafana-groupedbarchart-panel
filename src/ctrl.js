@@ -165,7 +165,7 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                 this.addAxes();
                 this.addTooltips();
                 this.addBar();
-                d3.select(this.element).attr('style', `width: ${this.width*1.5}px; height: ${this.height*1.5}px`);
+                d3.select(this.element).attr('style', `width: ${this.width*0.9}px; height: ${this.height*0.9}px`);
                 if (this.showLegend) this.addLegend(this.legendType);
             }
 
