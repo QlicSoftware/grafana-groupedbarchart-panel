@@ -153,7 +153,7 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                 // this.element.clientHeigh;
 
                 this.width = this.element.parentNode.clientWidth
-                this.height = this.element.parentNode.clientHeight * 0.7
+                this.height = this.element.parentNode.clientHeight
 
                 this.svg.attr('width', this.width)
                     .attr('height', this.height)
