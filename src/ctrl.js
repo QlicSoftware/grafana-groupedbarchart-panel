@@ -335,6 +335,7 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                 }
 
                 if(this.barValuesShow) {
+                    this.barCount = (this.barCount ? this.barCount : 0)++
                     this.barC.append('text')
                         .attr('x', d => {
                             return (this.orientation === 'horizontal')
@@ -342,9 +343,7 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                             : this.x1(d.name) + this.x1.rangeBand()/4 + this.margin.left;
                         })
                         .attr('y', d => {
-                            return (this.orientation === 'horizontal')
-                            ? this.y1(d.name) +(this.y1.rangeBand()/2)
-                            : this.y(d.value) - this.height -8;
+                            return 10;
                         })
                         .attr('dy', '.35em')
                         .style('fill', `${this.fontColor}`)
