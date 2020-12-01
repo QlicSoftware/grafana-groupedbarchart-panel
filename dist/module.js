@@ -1,3 +1,5 @@
+'use strict';
+
 System.register(['./ctrl'], function (_export, _context) {
     "use strict";
 
