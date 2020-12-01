@@ -192,8 +192,6 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                 }, {
                     key: 'link',
                     value: function link(scope, elem, attrs, ctrl) {
-                        console.log(elem);
-
                         var groupedBarChart = function () {
                             function groupedBarChart(opts) {
                                 var _this3 = this;
@@ -202,8 +200,8 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
 
                                 this.data = opts.data;
                                 this.margin = opts.margin;
-                                this.width = parseInt(opts.width, 10);
-                                this.height = parseInt(opts.height, 10);
+                                this.width = elem[0].clientWidth;
+                                this.height = elem[0].clientHeigh;
                                 this.showLegend = opts.legend;
                                 this.legendType = opts.position;
                                 this.chartType = opts.chartType;
@@ -256,6 +254,9 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                                 value: function draw() {
                                     d3.select(this.element).html("");
                                     this.svg = d3.select(this.element).append('svg');
+
+                                    // this.element.clientWidth;
+                                    // this.element.clientHeigh;
                                     this.svg.attr('width', this.width).attr('height', this.height)
                                     // .attr('viewBox', `0, 0, ${this.width}, ${this.height}`)
                                     .attr('preserveAspectRatio', 'xMinYMin meet').style('padding', '10px').attr('transform', 'translate(0, ' + this.margin.top + ')');
