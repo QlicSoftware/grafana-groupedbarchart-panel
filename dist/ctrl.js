@@ -129,7 +129,6 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                     _this.events.on('data-received', _this.onDataReceived.bind(_this));
                     _this.events.on('data-snapshot-load', _this.onDataReceived.bind(_this));
                     _this.events.on('data-error', _this.onDataError.bind(_this));
-                    _this.row.events.on('span-changed', console.log);
                     return _this;
                 }
 
@@ -193,6 +192,8 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                 }, {
                     key: 'link',
                     value: function link(scope, elem, attrs, ctrl) {
+                        console.log(elem);
+
                         var groupedBarChart = function () {
                             function groupedBarChart(opts) {
                                 var _this3 = this;
