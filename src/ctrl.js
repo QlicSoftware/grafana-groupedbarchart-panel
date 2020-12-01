@@ -152,9 +152,9 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                 // this.element.clientWidth;
                 // this.element.clientHeigh;
 
-                console.log(this.element.parentNode, this.element.parentNode.clientWidth, this.element.parentNode.clientHeigh)
+                console.log(this.element.parentNode, this.element.parentNode.clientWidth, this.element.parentNode.clientHeight)
                 this.svg.attr('width', this.element.parentNode.clientWidth)
-                    .attr('height', this.element.parentNode.clientHeigh)
+                    .attr('height', this.element.parentNode.clientHeight)
                     // .attr('viewBox', `0, 0, ${this.width}, ${this.height}`)
                     .attr('preserveAspectRatio', 'xMinYMin meet')
                     .style('padding', '10px')
