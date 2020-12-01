@@ -342,7 +342,7 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                             : this.x1(d.name) + this.x1.rangeBand()/4 + this.margin.left;
                         })
                         .attr('y', -10)
-                        .attr('dy', '.35em')
+                        .attr('dy', '.6em')
                         .style('fill', `${this.fontColor}`)
                         .text(d => { return d.value ? d.value : ''; });
                 }
