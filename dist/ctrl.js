@@ -200,8 +200,8 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
 
                                 this.data = opts.data;
                                 this.margin = opts.margin;
-                                this.width = opts.width;
-                                this.height = opts.height;
+                                this.width = elem[0].clientWidth;
+                                this.height = elem[0].clientHeigh;
                                 this.showLegend = opts.legend;
                                 this.legendType = opts.position;
                                 this.chartType = opts.chartType;
@@ -258,8 +258,9 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                                     // this.element.clientWidth;
                                     // this.element.clientHeigh;
 
-                                    console.log(this.element.parentNode, this.element.parentNode.clientWidth, this.element.parentNode.clientHeight);
-                                    this.svg.attr('width', this.element.parentNode.clientWidth).attr('height', this.element.parentNode.clientHeight)
+                                    this.width = this.element.parentNode.clientWidth;
+                                    this.height = this.element.parentNode.clientHeight;
+                                    this.svg.attr('width', this.width).attr('height', this.height)
                                     // .attr('viewBox', `0, 0, ${this.width}, ${this.height}`)
                                     .attr('preserveAspectRatio', 'xMinYMin meet').style('padding', '10px').attr('transform', 'translate(0, ' + this.margin.top + ')');
 
@@ -267,7 +268,7 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                                     this.addAxes();
                                     this.addTooltips();
                                     this.addBar();
-                                    d3.select(this.element).attr('style', 'width: ' + this.element.parentNode.clientWidth + 'px; height: ' + this.element.parentNode.clientHeight + 'px');
+                                    d3.select(this.element).attr('style', 'width: ' + this.width * 1.5 + 'px; height: ' + this.height * 1.5 + 'px');
                                     if (this.showLegend) this.addLegend(this.legendType);
                                 }
                             }, {
