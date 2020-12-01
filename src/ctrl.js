@@ -102,7 +102,7 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                 this.data = opts.data;
                 this.margin = opts.margin;
                 this.width = elem[0].clientWidth;
-                this.height = elem[0].clientHeigh;
+                this.height = elem[0].clientHeight;
                 this.showLegend = opts.legend;
                 this.legendType = opts.position;
                 this.chartType = opts.chartType;
@@ -153,7 +153,7 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                 // this.element.clientHeigh;
 
                 this.width = this.element.parentNode.clientWidth
-                this.height = this.element.parentNode.clientHeight
+                this.height = this.element.parentNode.clientHeight * 1.2
 
                 this.svg.attr('width', this.width)
                     .attr('height', this.height)

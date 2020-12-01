@@ -201,7 +201,7 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                                 this.data = opts.data;
                                 this.margin = opts.margin;
                                 this.width = elem[0].clientWidth;
-                                this.height = elem[0].clientHeigh;
+                                this.height = elem[0].clientHeight;
                                 this.showLegend = opts.legend;
                                 this.legendType = opts.position;
                                 this.chartType = opts.chartType;
@@ -259,7 +259,7 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                                     // this.element.clientHeigh;
 
                                     this.width = this.element.parentNode.clientWidth;
-                                    this.height = this.element.parentNode.clientHeight * 0.7;
+                                    this.height = this.element.parentNode.clientHeight * 1.2;
 
                                     this.svg.attr('width', this.width).attr('height', this.height).attr('preserveAspectRatio', 'xMinYMin meet');
 
