@@ -404,7 +404,7 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                                     if (this.barValuesShow) {
                                         this.barC.append('text').attr('x', function (d) {
                                             return _this4.orientation === 'horizontal' ? _this4.x(d.value) + 5 : _this4.x1(d.name) + _this4.x1.rangeBand() / 4 + _this4.margin.left;
-                                        }).attr('y', -10).attr('dy', '.6em').style('fill', '' + this.fontColor).text(function (d) {
+                                        }).attr('y', -20).attr('dy', '.9em').style('fill', '' + this.fontColor).text(function (d) {
                                             return d.value ? d.value : '';
                                         });
                                     }
