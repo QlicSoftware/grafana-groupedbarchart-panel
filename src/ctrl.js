@@ -335,16 +335,13 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                 }
 
                 if(this.barValuesShow) {
-                    this.barCount = (this.barCount ? this.barCount : 0)++
                     this.barC.append('text')
                         .attr('x', d => {
                             return (this.orientation === 'horizontal')
                             ? this.x(d.value) +5
                             : this.x1(d.name) + this.x1.rangeBand()/4 + this.margin.left;
                         })
-                        .attr('y', d => {
-                            return 10;
-                        })
+                        .attr('y', 10)
                         .attr('dy', '.35em')
                         .style('fill', `${this.fontColor}`)
                         .text(d => { return d.value ? d.value : ''; });
