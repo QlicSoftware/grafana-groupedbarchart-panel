@@ -258,8 +258,8 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                                     // this.element.clientWidth;
                                     // this.element.clientHeigh;
 
-                                    this.width = this.element.parentNode.clientWidth;
-                                    this.height = this.element.parentNode.clientHeight;
+                                    this.width = this.element.parentNode.clientWidth * 0.8;
+                                    this.height = this.element.parentNode.clientHeight * 0.8;
                                     this.svg.attr('width', this.width).attr('height', this.height)
                                     // .attr('viewBox', `0, 0, ${this.width}, ${this.height}`)
                                     .attr('preserveAspectRatio', 'xMinYMin meet').style('padding', '10px').attr('transform', 'translate(0, ' + this.margin.top + ')');
@@ -268,7 +268,7 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                                     this.addAxes();
                                     this.addTooltips();
                                     this.addBar();
-                                    d3.select(this.element).attr('style', 'width: ' + this.width * 0.9 + 'px; height: ' + this.height * 0.9 + 'px');
+                                    d3.select(this.element).attr('style', 'width: ' + this.width * 1.5 + 'px; height: ' + this.height * 1.5 + 'px');
                                     if (this.showLegend) this.addLegend(this.legendType);
                                 }
                             }, {
