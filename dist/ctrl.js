@@ -129,6 +129,7 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                     _this.events.on('data-received', _this.onDataReceived.bind(_this));
                     _this.events.on('data-snapshot-load', _this.onDataReceived.bind(_this));
                     _this.events.on('data-error', _this.onDataError.bind(_this));
+                    _this.events.on('span-changed', console.log);
                     return _this;
                 }
 
