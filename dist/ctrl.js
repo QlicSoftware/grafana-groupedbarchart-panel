@@ -259,7 +259,7 @@ System.register(['app/plugins/sdk', 'lodash', 'app/core/utils/kbn', 'app/core/ti
                                     // this.element.clientHeigh;
 
                                     this.width = this.element.parentNode.clientWidth;
-                                    this.height = this.element.parentNode.clientHeight;
+                                    this.height = this.element.parentNode.clientHeight * 0.9;
 
                                     this.svg.attr('width', this.width).attr('height', this.height).attr('preserveAspectRatio', 'xMinYMin meet');
 
