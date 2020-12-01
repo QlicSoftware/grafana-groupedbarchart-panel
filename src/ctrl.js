@@ -74,18 +74,8 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
 
     onDataReceived(dataList) {
         if (dataList && dataList.length) {
-            let o = _.groupBy(dataList[0].rows, e => e[0]);
-            _.forOwn(o, (e, i) => {
-                let t = _.groupBy(e, sta => sta[1]);
-                o[i] = _.forOwn(t, (sum, tid) => {t[tid] = sum.map(s => s[2]).reduce((x,y) => x+y)})
-            });
-
-            let res = [];
-            _.forOwn(o, (e, i) => {
-                e.label = i;
-                res.push(e);
-            });
-            this.data = res;//.sort((a, b) => {return (a.label>b.label)?-1:((b.label>a.label)?1:0)});
+            let columns = dataList[0].columns.map(({text}) => text)
+            this.data = dataList[0].rows.map((row) => columns.reduce(function (accumulator, value, index) { return Object.assign(accumulator, {[value]: row[index]}) }, {}))
         } else {
             this.data = [
                 {label:"Machine001", "Off":15, "Down":50, "Run": 0, "Idle":40},
