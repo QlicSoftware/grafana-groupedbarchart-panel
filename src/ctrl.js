@@ -344,7 +344,7 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                         .attr('y', -20)
                         .attr('dy', '.9em')
                         .style('fill', `${this.fontColor}`)
-                        .text(d => { return d.value ? d.value : ''; });
+                        .text(d => { return d.value ? d.value : 0; });
                 }
 
                 this.bar.on('mouseover', d => {
