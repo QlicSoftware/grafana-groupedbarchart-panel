@@ -335,8 +335,10 @@ export class GroupedBarChartCtrl extends MetricsPanelCtrl {
                 }
 
                 if(this.barValuesShow) {
+                    console.log(this.barC)
                     this.barC.append('text')
                         .attr('x', d => {
+                            console.log(d)
                             return (this.orientation === 'horizontal')
                             ? this.x(d.value) +5
                             : this.x1(d.name) + this.x1.rangeBand()/4 + this.margin.left;
